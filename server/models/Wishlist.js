@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const cartItemSchema = new mongoose.Schema({
- userId: {
+const wishlistSchema = new mongoose.Schema({
+  userId: {
     type: String,
     required: true,
   },
@@ -15,4 +15,4 @@ const cartItemSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model('Cart', cartItemSchema);
+module.exports = mongoose.model('Wishlist', wishlistSchema);

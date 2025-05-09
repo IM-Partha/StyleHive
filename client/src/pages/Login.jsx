@@ -1,8 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { auth } from "../firebase/firebase";
+import axios from "axios"; // Use Axios to make HTTP requests
 
 const Login = () => {
   const [information, setInformation] = useState({
@@ -44,25 +43,33 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        information.email,
-        information.password
-      );
+      // Send login request to backend
+      const response = await axios.post("http://localhost:5000/auth/login", {
+        email: information.email,
+        password: information.password,
+      });
 
-      const user = userCredential.user;
+      const user = response.data.user; // Assuming the response contains the user data
+      const token = response.data.token; // Assuming the response contains the JWT token
 
-      // Store user info in localStorage
-      localStorage.setItem("user", JSON.stringify({
-        displayName: user.displayName || "User", // Fallback to 'User' if no display name
-        email: user.email,
-      }));
+      if (user && token) {
+        // Store the token and user info in localStorage
+        localStorage.setItem("token", token); // Store the token
+        localStorage.setItem("user", JSON.stringify({
+          id: user.id, // Use the correct field here based on backend
+          username: user.username || "User", // Assuming the response contains username
+          email: user.email,
+        }));
 
-      navigate("/"); // Redirect after successful login
-      toast.success("Login successful!");
+        navigate("/"); // Redirect after successful login
+        toast.success("Login successful!");
+      } else {
+        setError("Login failed. Please try again.");
+        toast.error("Login failed. Please try again.");
+      }
     } catch (err) {
-      setError("Error logging in: " + err.message);
-      toast.error("Error logging in: " + err.message);
+      setError("Error logging in: " + err.response?.data?.message || err.message);
+      toast.error("Error logging in: " + err.response?.data?.message || err.message);
     } finally {
       setLoading(false);
     }

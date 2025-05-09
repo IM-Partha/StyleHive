@@ -1,12 +1,7 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase/firebase";
-import { getFirestore, doc, setDoc, setLogLevel } from "firebase/firestore";
 import { toast } from "react-toastify";
-
-// Optional: Reduce console noise
-setLogLevel("error");
+import axios from "axios";
 
 const Signup = () => {
   const [info, setInfo] = useState({ name: "", email: "", password: "" });
@@ -14,7 +9,6 @@ const Signup = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const db = getFirestore();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,24 +45,20 @@ const Signup = () => {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      await updateProfile(user, { displayName: name });
-
-      await setDoc(doc(db, "users", user.uid), {
-        name,
+      // Make API call to Node.js backend
+      const response = await axios.post("http://localhost:5000/auth/register", {
+        username: name,
         email,
+        password,
       });
 
-      // Save user to localStorage
-      localStorage.setItem("user", JSON.stringify({ displayName: name, email }));
-
-      toast.success("Registration successful!");
-      setInfo({ name: "", email: "", password: "" }); // Clear input
-      navigate("/login");
+      if (response.status === 201) {
+        toast.success("Registration successful!");
+        setInfo({ name: "", email: "", password: "" }); // Clear input
+        navigate("/login");
+      }
     } catch (err) {
-      toast.error("Error registering: " + err.message);
+      toast.error("Error registering: " + err.response?.data?.message || err.message);
     } finally {
       setLoading(false);
     }

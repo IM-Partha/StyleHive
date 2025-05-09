@@ -1,0 +1,236 @@
+{
+    "categories": [
+      {
+        "name": "Clothing & Apparel",
+        "subcategories": [
+          {
+            "name": "Men's Clothing",
+            "products": [
+              { 
+                "id": 1, 
+                "name": "Men's T-Shirt", 
+                "price": "₹1,499", 
+                "imageUrl": "https://m.media-amazon.com/images/I/61idJrfaIRL._SY879_.jpg",
+                "rating": 4.5
+              },
+              { 
+                "id": 2, 
+                "name": "Men's Jeans", 
+                "price": "₹2,999", 
+                "imageUrl": "https://m.media-amazon.com/images/I/815gdBdQIOL._SY879_.jpg",
+                "rating": 4.2
+              },
+              { 
+                "id": 3, 
+                "name": "Men's Shirt", 
+                "price": "₹1,799", 
+                "imageUrl": "https://m.media-amazon.com/images/I/51j2mBT8iiL.jpg",
+                "rating": 4.7
+              },
+              { 
+                "id": 4, 
+                "name": "Men's Hoodie", 
+                "price": "₹2,499", 
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQMBiGej6SKIQFjztWY4RQmW02-NpltoSmwv4aRtLGAC8HjRDPZCODqoiY46NyV6QULLe_94Cz_2gmwUFvkVgW0GvnWd6OOOqV3tz7v1hA",
+                "rating": 4.3
+              },
+              { 
+                "id": 5, 
+                "name": "Men's Jacket", 
+                "price": "₹4,499", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRF-QzSUmHUiNu2DVka-6TXQp-9V9TzLMTjbSAcpkwV3xjAW1o_kywammXbm2IRxo3D1JxMWvyu3TwnQ6k4_7KyhWCQQ4Ph0ggkbjiIqpM",
+                "rating": 4.6
+              },
+              { 
+                "id": 6, 
+                "name": "Men's Shorts", 
+                "price": "₹1,299", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTIdqioMLKPoJL6-0pVcQI_8tBHlpWuEBIyf6THOIgcqj5AhhgTF-C_-NxX4r4Vkh8zVBDWLYoENScDVOjgJ5tLSG_o8_db4Tp1uytUmhs8Cbs-D243cP87IQ",
+                "rating": 4.0
+              },
+              { 
+                "id": 7, 
+                "name": "Men's Sneakers", 
+                "price": "₹3,499", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQjF219ALpJyqoL4LtSEl3uoOPHC0gwEiYYvWgtIWps5cc7n3AsYNj9K6ahYZZH7y3vb2yVYom0OQzPQoAQJHYwyIhL_MJdBtPnhONFNAw0C3kVT0ztjpwL",
+                "rating": 4.8
+              },
+              { 
+                "id": 8, 
+                "name": "Men's Joggers", 
+                "price": "₹1,899", 
+                "imageUrl": "https://images.meesho.com/images/products/501693393/kzfhv_1200.jpg",
+                "rating": 4.1
+              },
+              { 
+                "id": 9, 
+                "name": "Men's Blazer", 
+                "price": "₹5,499", 
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSYEuax7BrO-uzPq5IUwXC4uqFVjNYj6PINEYt0-RsBFphqKYfU80f_nUmabpeykoCOztE8EfrKZA1QIpOcz6-08TCTsLzIMcIaY7MCcpXS21IDzaQ-cV_B",
+                "rating": 4.4
+              },
+              { 
+                "id": 10, 
+                "name": "Men's Polo Shirt", 
+                "price": "₹2,199", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQVMDV1_UFdab7oK0o6UFCNH_aw5vC5uv8ZXM0BJ8ot5tRBlwumzQ-gbSAWRooeWHeD5G_69da0Q63d-6KYqJKsTPv8s5i6s6o4Z8oOAzbrw_5JcO0o1Q8-Ng",
+                "rating": 4.3
+              }
+            ]
+          },
+          {
+            "name": "Women's Clothing",
+            "products": [
+              { 
+                "id": 11, 
+                "name": "Women's Dress", 
+                "price": "₹3,499", 
+                "imageUrl": "https://images.meesho.com/images/products/386329438/1bjhj_1200.jpg",
+                "rating": 4.7
+              },
+              { 
+                "id": 12, 
+                "name": "Women's Skirt", 
+                "price": "₹1,999", 
+                "imageUrl": "https://images.meesho.com/images/products/305301661/fhc8v_1200.jpg",
+                "rating": 4.5
+              },
+              { 
+                "id": 13, 
+                "name": "Women's Blouse", 
+                "price": "₹1,499", 
+                "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcToBHFffWNlHYGtKF507Y-SUZ9ZsK1CFoE1cdSXuEDejIUCcGseNV4NR6ZPrwKKIyv35IO17pU53XUwRDNCGm_4yHe2DNatTuXAZ17z0RxCawhuFcinTl6hyQ",
+                "rating": 4.2
+              },
+              { 
+                "id": 14, 
+                "name": "Women's Jacket", 
+                "price": "₹3,299", 
+                "imageUrl": "https://images.meesho.com/images/products/395603452/7g7bq_1200.jpg",
+                "rating": 4.6
+              },
+              { 
+                "id": 15, 
+                "name": "Women's Sweater", 
+                "price": "₹2,299", 
+                "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRHGlhWeFHkX5kxBJfOxVkLMnI4rB2Zu5zAGlKwq2N3kdtTHbxuUjI_Db6Ht3-1WB0zRe_ZJdp-Ytx128mysTq5mFoDDzqkEbD5a8KQP90",
+                "rating": 4.4
+              },
+              { 
+                "id": 16, 
+                "name": "Women's T-shirt", 
+                "price": "₹1,199", 
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTYv8nnkATyRfSVgoTreH9HOMmlgvkhe0tYrUxTGKtIq5mVVAmkxbi8bVPeIZvdD810mcGk6ISNB2fUoXL3j77L8NupR2EpJNhsfqEzBkI",
+                "rating": 4.1
+              },
+              { 
+                "id": 17, 
+                "name": "Women's Jeans", 
+                "price": "₹2,499", 
+                "imageUrl": "https://images.meesho.com/images/products/313719770/6dqxg_1200.jpg",
+                "rating": 4.3
+              },
+              { 
+                "id": 18, 
+                "name": "Women's Leggings", 
+                "price": "₹1,499", 
+                "imageUrl": "https://images.meesho.com/images/products/510542329/7jm4m_1200.jpg",
+                "rating": 4.0
+              },
+              { 
+                "id": 19, 
+                "name": "Women's Shoes", 
+                "price": "₹2,999", 
+                "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSA6T-QCS3l9DIXY0077yOQtyWjcu6cKwvnfamrTqlyDBUlNuasRpmKEvy0fCxES8e_U4VA4t1xdymR33mKvNtAG2DEWcW9nbIa7DwkWpdPznY9GvAFPK7_OA",
+                "rating": 4.8
+              },
+              { 
+                "id": 20, 
+                "name": "Women's Cardigan", 
+                "price": "₹2,099", 
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT4fiJzSqRjg-sebY7p2VjSayVZch8R7KO7-kSCpI2PxdEdVpPGZiaRX1u0K1ylDlD5WH5fE23dkZiFHp9KaYXBEc7P_uwqAMaHzqkqDize4aTTjH07LLnH_A",
+                "rating": 4.3
+              }
+            ]
+          },
+          {
+            "name": "Kids & Baby",
+            "products": [
+              { 
+                "id": 21, 
+                "name": "Baby Onesie", 
+                "price": "₹899", 
+                "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTiUwaIhe6oA3MAY77NRqdeA1VlGXR4aIAECGEHdXnBaiBKEegiiGbdZp3yylvLR2srMyT049JTB4VLmGb3XE1M_u9LwOglwqOturyoo4m7Nw4eh_NycMs5d1s",
+                "rating": 4.6
+              },
+              { 
+                "id": 22, 
+                "name": "Kids' T-Shirt", 
+                "price": "₹799", 
+                "imageUrl": "https://images.meesho.com/images/products/425018464/ydsos_1200.jpg",
+                "rating": 4.2
+              },
+              { 
+                "id": 23, 
+                "name": "Kids' Shorts", 
+                "price": "₹699", 
+                "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ_LgNWcaCMBMIz3pAPnu0RcJX-iyglEoqUyjx1VXhE0u-uinxdzQkTSgThiIDd-z105gSEfGfohP2s95assiz4yv0_p2rB1T2HBSCcLZPnV3riyZDh2mJLxQ",
+                "rating": 4.5
+              },
+              { 
+                "id": 24, 
+                "name": "Baby Blanket", 
+                "price": "₹1,299", 
+                "imageUrl": "https://images.meesho.com/images/products/377357840/lgenl_1200.jpg",
+                "rating": 4.4
+              },
+              { 
+                "id": 25, 
+                "name": "Kids' Shoes", 
+                "price": "₹1,599", 
+                "imageUrl": "https://images.meesho.com/images/products/225471867/tql0g_1200.jpg",
+                "rating": 4.7
+              },
+              { 
+                "id": 26, 
+                "name": "Baby Bottles", 
+                "price": "₹599", 
+                "imageUrl": "https://images.meesho.com/images/products/408448513/3qzgm_1200.jpg",
+                "rating": 4.3
+              },
+              { 
+                "id": 27, 
+                "name": "Kids' Pajamas", 
+                "price": "₹1,199", 
+                "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQygeBtjOAyB31L1b3u4WY4xK__O-R5-FACUycH1VoKgPwaOOvJghNiS2RV8ZiZIwwG616qJA8JMClnmR28IdZGVPziwU6M0ONB4HMS_eiE1xGHWdQVYk52F_Q",
+                "rating": 4.1
+              },
+              { 
+                "id": 28, 
+                "name": "Baby Car Seat", 
+                "price": "₹4,999", 
+                "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS7wS4BxQVEA7UWVcIh1y2pfT-EiGFasiYlCbkQDe0kDWlz4eIXaniNdX44F_Olwd17EV-QumAraAia2vo5-XQNUCuk0kmtk6xU7-6W0Sl5S_oM_4CwiKIM",
+                "rating": 4.8
+              },
+              { 
+                "id": 29, 
+                "name": "Kids' Backpack", 
+                "price": "₹899", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS19SBxmmBL-diR1hFnr7WdKVl_0HTsIjHyFdzpE-jXzoc-jtOobBiRJkK-bd-AqlnS_cvnB0ZKAp_4aEgyYTflQJfT4ODgw8k0lC2r0EgvRVxKakd-_wTxjw",
+                "rating": 4.4
+              },
+              { 
+                "id": 30, 
+                "name": "Baby Diapers", 
+                "price": "₹499", 
+                "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ_h2-KWGWleE-4yyf74iKW1dS7MfwfM9iMbNsKEZ40QNS5-IrnlemRvHKwiMrlNAVCnZS3KXyvdI9pYgl44_k-MSyjxIHgR4NqW0IL1eE",
+                "rating": 4.6
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+
+  
