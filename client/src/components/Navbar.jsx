@@ -85,18 +85,25 @@ const Navbar = () => {
           {/* Cart, Wishlist, Profile/Login */}
           <div className="flex items-center gap-4">
             {/* Wishlist */}
-            <Link to="/wishlist" className="relative text-sm flex items-center gap-2">
+            <Link
+              to="/wishlist"
+              className="relative text-sm flex items-center gap-2"
+            >
               <CiBookmark size={22} />
-              <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
-                {countnumber} {/* Updated dynamically */}
+              <span
+                className={`absolute -top-2 -right-3 text-white text-xs px-2 py-0.5 rounded-full ${
+                  countnumber ? "bg-red-500" : ""
+                }`}
+              >
+                {countnumber}
               </span>
             </Link>
 
             {/* Cart */}
-            <Link to='/cart' className="relative text-sm" aria-label="Cart">
+            <Link to="/cart" className="relative text-sm" aria-label="Cart">
               <IoCartOutline size={26} />
-              <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
-                {0} {/* Placeholder for cart item count */}
+              <span className="absolute -top-2 -right-3  text-white text-xs px-2 py-0.5 rounded-full">
+                {} {/* Placeholder for cart item count */}
               </span>
             </Link>
 
@@ -157,7 +164,10 @@ const Navbar = () => {
           </Link>
 
           {/* Wishlist */}
-          <Link to="/wishlist" className="relative text-sm flex items-center gap-2">
+          <Link
+            to="/wishlist"
+            className="relative text-sm flex items-center gap-2"
+          >
             <CiBookmark size={22} />
             Wishlist
             <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
