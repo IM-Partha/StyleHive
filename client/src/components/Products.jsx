@@ -6,7 +6,7 @@ const Products = () => {
   const [sellProducts, setSellProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/products/all`)
+    axios.get(`${API_URL}api/products/all`)
       .then(response => {
         const allProducts = response.data.products[0].All;
 
