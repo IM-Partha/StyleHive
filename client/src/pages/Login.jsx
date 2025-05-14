@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios"; // Use Axios to make HTTP requests
+import API_URL from "../utils/Api_Url";
 
 const Login = () => {
   const [information, setInformation] = useState({
@@ -44,7 +45,7 @@ const Login = () => {
 
     try {
       // Send login request to backend
-      const response = await axios.post("http://localhost:5000/auth/login", {
+      const response = await axios.post(`${API_URL}auth/login`, {
         email: information.email,
         password: information.password,
       });

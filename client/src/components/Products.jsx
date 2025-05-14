@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_URL from '../utils/Api_Url';
 
 const Products = () => {
   const [sellProducts, setSellProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products/all')
+    axios.get(`${API_URL}api/products/all`)
       .then(response => {
         const allProducts = response.data.products[0].All;
 

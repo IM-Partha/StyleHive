@@ -9,6 +9,7 @@ import { selectSearchQuery } from "../redux/searchSlice";
 import { addBookmark, removeBookmark } from "../redux/bookmarkSlice";
 import { addToCart } from "../redux/cartSlice";
 import { toast } from "react-toastify";
+import API_URL from "../utils/Api_Url";
 
 const Allproducts = () => {
   const [alldatas, setAlldatas] = useState([]);
@@ -23,7 +24,7 @@ const Allproducts = () => {
     async function GateAllData() {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/products/all");
+        const res = await axios.get(`${API_URL}api/products/all`);
         setAlldatas(res?.data?.products[0]?.pro || []);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -77,7 +78,7 @@ const Allproducts = () => {
     dispatch(addToCart(item));
 
     try {
-      await axios.post("http://localhost:5000/api/cart/addcart", {
+      await axios.post(`${API_URL}api/cart/addcart`, {
         userId: user.id,
         productId: item.id,
         name: item.name,
@@ -86,7 +87,7 @@ const Allproducts = () => {
       });
       toast.success("Product added to cart!");
     } catch (error) {
-      toast.info("Product added to cart",error);
+      toast.info("Product already in cart",error);
     }
   }
 

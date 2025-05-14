@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import API_URL from "../utils/Api_Url";
 
 const Signup = () => {
   const [info, setInfo] = useState({ name: "", email: "", password: "" });
@@ -46,7 +47,7 @@ const Signup = () => {
 
     try {
       // Make API call to Node.js backend
-      const response = await axios.post("http://localhost:5000/auth/register", {
+      const response = await axios.post(`${API_URL}auth/register`, {
         username: name,
         email,
         password,

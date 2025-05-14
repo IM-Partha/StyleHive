@@ -42,10 +42,8 @@ const Navbar = () => {
     dispatch(setSearchQuery(query));
   };
 
-
-  console.log(cartCount)
   return (
-    <nav className="shadow-md p-4">
+    <nav className="shadow-md p-4 ">
       <div className="flex items-center justify-between">
         <img className="w-[130px] h-[36px]" src={logo} alt="Logo" />
 

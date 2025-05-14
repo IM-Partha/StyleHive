@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { useDispatch } from 'react-redux'; // Import useDispatch for Redux
 import { clearCart } from '../redux/cartSlice'; // Adjust path as needed
+import API_URL from '../utils/Api_Url';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Checkout = () => {
 
     if (userId) {
       // Clear cart from the server
-      fetch('http://localhost:5000/api/cart/clearcart', {
+      fetch(`${API_URL}api/cart/clearcart`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId }),
