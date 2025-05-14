@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { BsBookmarkFill, BsBookmark } from "react-icons/bs";
 import axios from "axios";
-import LoadingSkeleton from "./LoadingSkeleton";
-import { useSearchContext } from "../context/SearchContext"; // Import the custom hook
-import ToastContainer from "../utils/ToastContainer"; // Import the ToastContainer component
+import LoadingSkeleton from "../utils/LoadingSkeleton";
+
+import ToastContainer from "../utils/ToastContainer"; 
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+
 
 const Maincontent = () => {
   const [products, setProducts] = useState(null);
   const [selectedSection, setSelectedSection] = useState("Men's Clothing");
   const [userId, setUserId] = useState(null);
   const [wishlistProductIds, setWishlistProductIds] = useState(new Set());
-  const { searchQuery } = useSearchContext(); // Use the custom hook to get searchQuery
 
   // Fetch user and wishlist on mount
   useEffect(() => {
