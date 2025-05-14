@@ -1,4 +1,4 @@
-const API_URL = "https://aliexpress-server.vercel.app/"
+const API_URL = 
 
 
 export default API_URL
