@@ -85,9 +85,9 @@ const Allproducts = () => {
         imageUrl: item.imageUrl,
         price: item.price,
       });
-      toast.success("Product added to cart!");
+      
     } catch (error) {
-      toast.info("Product already in cart",error);
+     
     }
   }
 
