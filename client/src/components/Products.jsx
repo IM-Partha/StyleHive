@@ -30,7 +30,7 @@ const Products = () => {
   }, []);
 
   const handleImageClick = () => {
-    window.location.href = '/allproducts';  // Redirect to the product link
+    window.location.href = '/allproducts';  
   };
 
   return (
@@ -43,15 +43,15 @@ const Products = () => {
             key={item.id}
             className="card bg-white shadow-lg hover:shadow-2xl transition-transform duration-300 rounded-xl relative"
           >
-            {/* Always show the "Sell" tag with a red background */}
+            
             <div className="absolute top-3 left-3 z-10">
               <span className="badge bg-red-500 text-white text-xs px-2 py-1">Sell</span>
             </div>
 
-            {/* Clickable image with pointer cursor */}
+           
             <figure 
               className="p-4 bg-gray-100 rounded-t-xl cursor-pointer" 
-              onClick={() => handleImageClick(item.link)} // Redirect on image click
+              onClick={() => handleImageClick(item.link)} 
             >
               <img
                 src={item.imageUrl}

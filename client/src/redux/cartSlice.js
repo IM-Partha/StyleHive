@@ -25,7 +25,6 @@ const cartSlice = createSlice({
         state.cart.push({ ...product, quantity: 1 });
       }
 
-      // Update localStorage after modification
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
     removeFromCart: (state, action) => {

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { useDispatch } from 'react-redux'; // Import useDispatch for Redux
-import { clearCart } from '../redux/cartSlice'; // Adjust path as needed
+import { useDispatch } from 'react-redux'; 
+import { clearCart } from '../redux/cartSlice'; 
 import API_URL from '../utils/Api_Url';
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // To dispatch actions to Redux
+  const dispatch = useDispatch(); 
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {

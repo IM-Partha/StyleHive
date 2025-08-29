@@ -1,4 +1,4 @@
-// src/components/Order.js
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseQuantity, decreaseQuantity, removeFromCart } from '../redux/cartSlice';
@@ -46,7 +46,7 @@ const Order = () => {
     <>
       <Navbar />
       <div className="flex flex-col lg:flex-row gap-6 px-4 py-8 bg-gray-50 min-h-screen">
-        {/* LEFT: Product Column */}
+        
         <div className="lg:w-3/4 w-full space-y-4">
           <button
             onClick={() => navigate('/allproducts')}
@@ -108,7 +108,7 @@ const Order = () => {
           )}
         </div>
 
-        {/* RIGHT: Summary Column */}
+        
         {cartItems && cartItems.length > 0 && (
           <div className="lg:w-1/4 w-full bg-white p-6 shadow-md rounded-md h-fit">
             <h3 className="text-xl font-semibold mb-4">Cart Summary</h3>

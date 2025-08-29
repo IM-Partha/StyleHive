@@ -7,7 +7,7 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchQuery } from "../redux/searchSlice";
 import { addBookmark, removeBookmark } from "../redux/bookmarkSlice";
-import { addToCart } from "../redux/cartSlice";
+import { addToCart, removeFromCart, selectCart } from "../redux/cartSlice";
 import { toast } from "react-toastify";
 import API_URL from "../utils/Api_Url";
 
@@ -15,11 +15,13 @@ const Allproducts = () => {
   const [alldatas, setAlldatas] = useState([]);
   const [category, setCategory] = useState("All");
   const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCart);
   const searchQuery = useSelector(selectSearchQuery);
   const bookmarkedProducts = useSelector((state) => state.bookmark.bookmarks);
 
+  // Fetch products
   useEffect(() => {
     async function GateAllData() {
       try {
@@ -61,35 +63,26 @@ const Allproducts = () => {
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const categories = [
-    "All",
-    "Men's Clothing",
-    "Women's Clothing",
-    "Kids & Baby",
-  ];
+  const categories = ["All", "Men's Clothing", "Women's Clothing", "Kids & Baby"];
 
-  async function HandelAddToCart(item) {
+  const handleAddToCart = (item) => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || !user.id) {
       window.location.href = "/login";
       return;
     }
 
-    dispatch(addToCart(item));
-
-    try {
-      await axios.post(`${API_URL}api/cart/addcart`, {
-        userId: user.id,
-        productId: item.id,
-        name: item.name,
-        imageUrl: item.imageUrl,
-        price: item.price,
-      });
-      
-    } catch (error) {
-     
+    // Avoid adding duplicate items
+    if (!cartItems.some((cartItem) => cartItem.id === item.id)) {
+      dispatch(addToCart(item));
+      toast.success("Product added to cart!");
     }
-  }
+  };
+
+  const handleRemoveFromCart = (itemId) => {
+    dispatch(removeFromCart(itemId));
+    toast.info("Product removed from cart!");
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -101,12 +94,11 @@ const Allproducts = () => {
           <button
             key={cat}
             onClick={() => handleClick(cat)}
-            className={`px-4 py-2 rounded-md text-sm sm:text-base cursor-pointer transition
-              ${
-                category === cat
-                  ? "bg-blue-600 text-white shadow-md"
-                  : "bg-gray-200 text-black hover:bg-gray-300"
-              }`}
+            className={`px-4 py-2 rounded-md text-sm sm:text-base cursor-pointer transition ${
+              category === cat
+                ? "bg-blue-600 text-white shadow-md"
+                : "bg-gray-200 text-black hover:bg-gray-300"
+            }`}
           >
             {cat === "All"
               ? "All Products"
@@ -141,30 +133,33 @@ const Allproducts = () => {
               <div className="flex justify-between items-start">
                 <div className="text-left">
                   <h2 className="text-md font-semibold">{item.name}</h2>
-                  <p className="text-sm text-gray-600">
-                    Rating: {item.rating}
-                  </p>
+                  <p className="text-sm text-gray-600">Rating: {item.rating}</p>
                   <p className="text-md font-bold">{item.price}</p>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => handleSelectProduct(item)}
-                    className="text-lg"
-                  >
-                    {bookmarkedProducts.some(
-                      (product) => product.id === item.id
-                    ) ? (
-                      <FaBookmark className= "cursor-pointer text-blue-600" />
+                <div className="flex flex-col space-y-2">
+                  <button onClick={() => handleSelectProduct(item)} className="text-lg">
+                    {bookmarkedProducts.some((product) => product.id === item.id) ? (
+                      <FaBookmark className="cursor-pointer text-blue-600" />
                     ) : (
                       <FaRegBookmark className="cursor-pointer text-gray-400" />
                     )}
                   </button>
-                  <button
-                    onClick={() => HandelAddToCart(item)}
-                    className="cursor-pointer bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition text-sm mt-1"
-                  >
-                    Buy Now
-                  </button>
+
+                  {cartItems.some((cartItem) => cartItem.id === item.id) ? (
+                    <button
+                      onClick={() => handleRemoveFromCart(item)}
+                      className="cursor-pointer bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition text-sm"
+                    >
+                      Remove
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleAddToCart(item)}
+                      className="cursor-pointer bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition text-sm"
+                    >
+                      Buy Now
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

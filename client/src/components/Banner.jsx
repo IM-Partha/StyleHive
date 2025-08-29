@@ -21,11 +21,11 @@ const Banner = () => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 3000); // change every 3 seconds
 
-    return () => clearInterval(interval); // cleanup
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden h-48 sm:h-56 md:h-72">
+    <div className="relative w-full overflow-hidden h-36 xs:h-40 sm:h-56 md:h-72 lg:h-96">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
