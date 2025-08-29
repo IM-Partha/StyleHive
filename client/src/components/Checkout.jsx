@@ -38,7 +38,9 @@ const Checkout = () => {
     }, 1000);
 
     const timer = setTimeout(() => {
-      navigate('/'); // Redirect to homepage
+      dispatch(clearCart());
+      navigate('/'); 
+      window.location.reload();
     }, 3000);
 
     return () => {

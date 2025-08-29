@@ -5,7 +5,7 @@ const Cartrouter = require('./routes/Cartrouter'); // Import the cart routes
 const wishlistRouter = require('./routes/Wishlistroute'); // Import the wishlist routes
 const Productroutes = require('./routes/Productsroute');
 const Cartroute = require('./routes/Cartroute');
-
+const paymentRoutes = require('./routes/paymentRoutes')
 
 require('dotenv').config();
 require('./models/db'); // Ensure you have your DB connection setup
@@ -21,8 +21,8 @@ server.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 server.use('/auth', router); // Authentication routes
 server.use('/cart', Cartrouter); // Cart routes
 
+server.use('/api/payment', paymentRoutes); /// payment
 
-// server.use('/api/wishlist', wishlistRouter); 
 server.use('/api/cart', Cartroute); 
 server.use('/api/products',Productroutes ); 
 

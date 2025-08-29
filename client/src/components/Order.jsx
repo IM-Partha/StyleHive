@@ -1,16 +1,110 @@
-
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { increaseQuantity, decreaseQuantity, removeFromCart } from '../redux/cartSlice';
+import { increaseQuantity, decreaseQuantity, removeFromCart, clearCart } from '../redux/cartSlice';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { toast } from "react-toastify";
 
+// ================= Payment Button =================
+const PaymentButton = ({ amount }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handlePayment = async () => {
+    const res = await loadRazorpayScript();
+    if (!res) {
+      toast.error("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
+    try {
+      // 1. Create order from backend
+      const { data: order } = await axios.post(
+        "http://localhost:5000/api/payment/orders",
+        { amount }
+      );
+
+      // 2. Setup Razorpay checkout options
+      const options = {
+        key: "rzp_test_RBCZxW2LPPhd00", // use your test key
+        amount: order.amount,
+        currency: order.currency,
+        name: "Book Store",
+        description: "Purchase Books",
+        order_id: order.id,
+        handler: async function (response) {
+          try {
+            // 3. Verify payment
+            const verifyRes = await axios.post(
+              "http://localhost:5000/api/payment/verify",
+              {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }
+            );
+
+            if (verifyRes.data.success) {
+              toast.success("✅ Payment Successful!");
+
+              
+              dispatch(clearCart());
+
+              // Redirect to home after short delay
+              setTimeout(() => {
+                navigate("/");
+              }, 1000);
+            } else {
+              toast.error("❌ Payment verification failed!");
+            }
+          } catch (err) {
+            console.error(err);
+            toast.error("⚠️ Error verifying payment!");
+          }
+        },
+        theme: { color: "#3399cc" },
+      };
+
+      // 4. Open Razorpay modal
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error(error);
+      toast.error("⚠️ Error creating payment order!");
+    }
+  };
+
+  return (
+    <button
+      onClick={handlePayment}
+      className="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+    >
+      Pay ₹{amount}
+    </button>
+  );
+};
+
+// ================= Order Page =================
 const Order = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
-  const navigate = useNavigate();
 
   const cleanPrice = (price) => {
     return parseFloat(price.replace(/[^\d.-]/g, '')) || 0;
@@ -34,10 +128,6 @@ const Order = () => {
     });
   }, [cartItems, totalPrice, totalQuantity]);
 
-  const handleOrderNow = () => {
-    window.location.href = '/checkout';
-  };
-
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
   };
@@ -49,7 +139,7 @@ const Order = () => {
         
         <div className="lg:w-3/4 w-full space-y-4">
           <button
-            onClick={() => navigate('/allproducts')}
+            onClick={() => window.history.back()}
             className="cursor-pointer inline-block px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 mb-4"
           >
             ← Back
@@ -108,18 +198,14 @@ const Order = () => {
           )}
         </div>
 
-        
         {cartItems && cartItems.length > 0 && (
           <div className="lg:w-1/4 w-full bg-white p-6 shadow-md rounded-md h-fit">
             <h3 className="text-xl font-semibold mb-4">Cart Summary</h3>
             <p className="text-md mb-1">Total Items: {totalQuantity}</p>
             <p className="text-md mb-4">Total Price: ₹{totalPrice}</p>
-            <button
-              onClick={handleOrderNow}
-              className="cursor-pointer w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
-            >
-              Order Now
-            </button>
+
+            {/* ✅ Payment Button */}
+            <PaymentButton amount={totalPrice} />
           </div>
         )}
       </div>
