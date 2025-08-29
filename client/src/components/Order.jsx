@@ -37,7 +37,7 @@ const PaymentButton = ({ amount }) => {
     try {
       // 1. Create order from backend
       const { data: order } = await axios.post(
-        "http://localhost:5000/api/payment/orders",
+        "https://aliexpress-api.vercel.app/api/payment/orders",
         { amount }
       );
 
@@ -53,7 +53,7 @@ const PaymentButton = ({ amount }) => {
           try {
             // 3. Verify payment
             const verifyRes = await axios.post(
-              "http://localhost:5000/api/payment/verify",
+              "https://aliexpress-api.vercel.app/api/payment/verify",
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
