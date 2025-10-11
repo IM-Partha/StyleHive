@@ -90,7 +90,7 @@ const Navbar = () => {
           </div>
 
           {/* Wishlist */}
-          <Link to="/bookmark" className="relative">
+          <Link to="/bookmart" className="relative">
             <CiBookmark size={24} />
             {bookmarks.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
@@ -150,7 +150,7 @@ const Navbar = () => {
             onChange={handleSearchChange}
             className="border px-3 py-2 rounded-md mt-3"
           />
-          <Link to="/bookmark" className="flex items-center gap-2 relative">
+          <Link to="/bookmart" className="flex items-center gap-2 relative">
             <CiBookmark size={22} /> Wishlist
             {bookmarks.length > 0 && (
               <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-1.5 rounded-full">
